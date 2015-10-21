@@ -32,8 +32,8 @@ export default class Datomic {
     });
   }
 
-  static listAliases({ host, port, protocol } = {}) {
-    const { listAliases: getRoute } = routes({ host, port, protocol });
+  static listStorageAliases({ host, port, protocol } = {}) {
+    const { listStorageAliases: getRoute } = routes({ host, port, protocol });
 
     return requestEdn({
       uri: getRoute(),
@@ -50,11 +50,11 @@ export default class Datomic {
     });
   }
 
-  transact(transactionData) {
+  transact(transaction) {
     return requestEdn({
       uri: this.routes.transact(),
       method: 'post',
-      body: new edn.Map([edn.kw(':tx-data'), transactionData]),
+      body: new edn.Map([edn.kw(':tx-data'), transaction]),
     });
   }
 
@@ -114,7 +114,7 @@ export default class Datomic {
 
   // TODO: Implement subscribeToEvents...
   subscribeToEvents(/* { basisT } */) {
-    return Promise.reject('Not yet implemented...');
+    return Promise.reject(new Error('Not yet implemented...'));
 
     // return requestEdn({
     //   uri: this.routes.subscribeToEvents({ basisT }),

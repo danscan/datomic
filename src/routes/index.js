@@ -16,7 +16,7 @@ export default ({ protocol = DEFAULT_PROTOCOL, host = DEFAULT_HOST, port = DEFAU
   const rootUri = `${protocol}://${host}:${port}`;
 
   return {
-    listAliases: () => rootUri + resources.storageAliases(),
+    listStorageAliases: () => rootUri + resources.storageAliases(),
     listDatabases: () => rootUri + resources.databases({ storageAlias }),
     createDatabase: () => rootUri + resources.databases({ storageAlias }),
     transact: () => rootUri + resources.database({ storageAlias, database }),
