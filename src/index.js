@@ -58,14 +58,14 @@ export default class Datomic {
     });
   }
 
-  getDatabaseInfo({ basisT }) {
+  getDatabaseInfo({ basisTime }) {
     return requestEdn({
-      uri: this.routes.getDatabaseInfo({ basisT }),
+      uri: this.routes.getDatabaseInfo({ basisTime }),
       method: 'get',
     });
   }
 
-  getDatoms({ basisT, index, entity, attribute, value, startValue, endValue, limit, offset, asOfT, sinceT, historical }) {
+  getDatoms({ basisTime, index, entity, attribute, value, startValue, endValue, limit, offset, asOfTime, sinceTime, historical }) {
     const options = {
       index,
       'e': entity,
@@ -75,27 +75,27 @@ export default class Datomic {
       'end': endValue,
       limit,
       offset,
-      'as-of-t': asOfT,
-      'since-t': sinceT,
+      'as-of-t': asOfTime,
+      'since-t': sinceTime,
       'history': historical,
     };
 
     return requestEdn({
-      uri: this.routes.getDatoms({ basisT }),
+      uri: this.routes.getDatoms({ basisTime }),
       method: 'get',
       query: options,
     });
   }
 
-  getEntity({ basisT, entity, asOfT, sinceT }) {
+  getEntity({ basisTime, entity, asOfTime, sinceTime }) {
     const options = {
       'e': entity,
-      'as-of-t': asOfT,
-      'since-t': sinceT,
+      'as-of-t': asOfTime,
+      'since-t': sinceTime,
     };
 
     return requestEdn({
-      uri: this.routes.getEntity({ basisT }),
+      uri: this.routes.getEntity({ basisTime }),
       method: 'get',
       query: options,
     });
@@ -113,11 +113,11 @@ export default class Datomic {
   }
 
   // TODO: Implement subscribeToEvents...
-  subscribeToEvents(/* { basisT } */) {
+  subscribeToEvents(/* { basisTime } */) {
     return Promise.reject(new Error('Not yet implemented...'));
 
     // return requestEdn({
-    //   uri: this.routes.subscribeToEvents({ basisT }),
+    //   uri: this.routes.subscribeToEvents({ basisTime }),
     //   method: 'get',
     // });
   }

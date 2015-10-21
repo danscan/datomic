@@ -7,8 +7,8 @@ const resources = {
   storageAliases: () => `/data/`,
   databases: ({ storageAlias }) => `/data/${storageAlias}/`,
   database: ({ storageAlias, database }) => `${resources.databases({ storageAlias })}${database}/`,
-  databaseData: ({ storageAlias, database, basisT = '-' }) => `${resources.database({ storageAlias, database })}/${basisT}/`,
-  datoms: ({ storageAlias, database, basisT }) => `${resources.databaseData({ storageAlias, database, basisT })}datoms`,
+  databaseData: ({ storageAlias, database, basisTime = '-' }) => `${resources.database({ storageAlias, database })}/${basisTime}/`,
+  datoms: ({ storageAlias, database, basisTime }) => `${resources.databaseData({ storageAlias, database, basisTime })}datoms`,
   events: ({ storageAlias, database }) => `/events/${storageAlias}/${database}`,
 };
 
@@ -20,9 +20,9 @@ export default ({ protocol = DEFAULT_PROTOCOL, host = DEFAULT_HOST, port = DEFAU
     listDatabases: () => rootUri + resources.databases({ storageAlias }),
     createDatabase: () => rootUri + resources.databases({ storageAlias }),
     transact: () => rootUri + resources.database({ storageAlias, database }),
-    getDatabaseInfo: ({ basisT = '-' }) => rootUri + resources.databaseData({ storageAlias, database, basisT }),
-    getDatoms: ({ basisT = '-' }) => `${rootUri}${resources.databaseData({ storageAlias, database, basisT })}datoms`,
-    getEntity: ({ basisT = '-' }) => `${rootUri}${resources.databaseData({ storageAlias, database, basisT })}entity`,
+    getDatabaseInfo: ({ basisTime = '-' }) => rootUri + resources.databaseData({ storageAlias, database, basisTime }),
+    getDatoms: ({ basisTime = '-' }) => `${rootUri}${resources.databaseData({ storageAlias, database, basisTime })}datoms`,
+    getEntity: ({ basisTime = '-' }) => `${rootUri}${resources.databaseData({ storageAlias, database, basisTime })}entity`,
     query: () => `${rootUri}/api/query`,
     subscribeToEvents: () => rootUri + resources.events({ storageAlias, database }),
   };
