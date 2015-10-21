@@ -1,2 +1,4 @@
 # datomic
-[WIP] Javascript datomic driver.  Coming very soon.
+
+## WARNING
+This is a work-in-progress.  Tests and docs coming soon.
