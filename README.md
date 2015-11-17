@@ -1,4 +1,4 @@
 # datomic
 
-## WARNING
-This is a work-in-progress.  Tests and docs coming soon.
+## Do not use
+Just use the datomic REST api... http://docs.datomic.com/rest.html
