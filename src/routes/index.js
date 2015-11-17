@@ -8,7 +8,7 @@ const resources = {
   storageAliases: () => `/data/`,
   databases: ({ storageAlias }) => `/data/${storageAlias}/`,
   database: ({ storageAlias, database }) => `${resources.databases({ storageAlias })}${database}/`,
-  databaseData: ({ storageAlias, database, basisTime = DEFAULT_BASIS_TIME }) => `${resources.database({ storageAlias, database })}/${basisTime}/`,
+  databaseData: ({ storageAlias, database, basisTime = DEFAULT_BASIS_TIME }) => `${resources.database({ storageAlias, database })}${basisTime}/`,
   datoms: ({ storageAlias, database, basisTime }) => `${resources.databaseData({ storageAlias, database, basisTime })}datoms`,
   events: ({ storageAlias, database }) => `/events/${storageAlias}/${database}`,
 };
