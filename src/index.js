@@ -58,7 +58,7 @@ export default class Datomic {
     });
   }
 
-  getDatabaseInfo({ basisTime }) {
+  getDatabaseInfo({ basisTime } = {}) {
     return requestEdn({
       uri: this.routes.getDatabaseInfo({ basisTime }),
       method: 'get',
